@@ -3,6 +3,7 @@ import { changeServiceField, editService, removeService } from "../redux/actions
 
 const ServiceList = () => {
     const items = useSelector(state => state.serviceList);
+    const searchText = useSelector(state => state.serviceSearch)
     const dispatch = useDispatch();
 
     const handleRemove = (id) => {
@@ -16,9 +17,11 @@ const ServiceList = () => {
         dispatch(removeService(id))
     }
 
+    const filtredItems = items.filter((i) => i.name.toLowerCase().indexOf(searchText.toLowerCase()) !== -1);
+
     return (
         <ul>
-            {items.map(o =>
+            {filtredItems.map(o =>
                 <li key={o.id}>
                     {o.name} 
                     {o.price}
