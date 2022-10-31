@@ -11,7 +11,7 @@ const ServiceSearch = () => {
     }
 
     return (
-        <input type="search" onChange={handleChage} value={searchText}/>
+        <input type="search" onChange={handleChage} value={searchText} placeholder="Поиск по названию" />
     )
 }
 
